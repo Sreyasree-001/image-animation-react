@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import ImageAnimation from "./components/ImageAnimation";
-import New from "./components/New";
+
 
 
 function App() {
@@ -97,7 +97,7 @@ function App() {
         
       </main> */}
       <ImageAnimation />
-      {/* <New/> */}
+      
     </>
   );
 }

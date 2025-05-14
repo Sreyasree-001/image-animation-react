@@ -35,7 +35,11 @@ export default function ImageAnimation() {
     "img1.webp",
     "img2.webp",
     "img3.webp",
-    "img4.webp"
+    "img4.webp",
+    "img5.webp",
+    "img6.webp",
+    "img7.webp",
+    "img8.webp",
   ];
   const gridRef = useRef();
   const panelRef = useRef();
@@ -43,6 +47,8 @@ export default function ImageAnimation() {
 
   const [selected, setSelected] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const [panelPosition, setPanelPosition] = useState("right");
 
   useEffect(() => {
     preloadImages(".grid__item-image").then(() =>
@@ -119,6 +125,14 @@ export default function ImageAnimation() {
         )
         .then(() => setIsAnimating(false));
     });
+
+    // const startRect = img.getBoundingClientRect();
+    // const screenCenterX = window.innerWidth / 2;
+    // const position = "center";
+    // if (startRect.right < screenCenterX) position = "left";
+    // else if (startRect.left > screenCenterX) position = "right";
+
+    // setPanelPosition(position);
   };
 
   const closePanel = () => {
@@ -147,8 +161,11 @@ export default function ImageAnimation() {
   };
 
   return (
-    <div className="app">
-      <div ref={gridRef} className="grid">
+    <div className="m-10">
+      <div
+        ref={gridRef}
+        className="grid grid-cols-8 gap-4 justify-center items-center"
+      >
         {images.map((src, i) => (
           <div
             key={i}
@@ -163,7 +180,10 @@ export default function ImageAnimation() {
         ))}
       </div>
       {selected && (
-        <div ref={panelRef} className="panel">
+        <div
+          ref={panelRef} className="panel"
+          // className={`panel ${panelPosition === "right" ? "right" : "left"}`}
+        >
           <button className="panel__close" onClick={closePanel}>
             ✕
           </button>
@@ -173,7 +193,7 @@ export default function ImageAnimation() {
             style={{
               backgroundImage: `url(${selected})`,
               width: "300px",
-              height: "400px",
+              height: "60vh",
             }}
           />
         </div>
